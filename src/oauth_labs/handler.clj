@@ -26,9 +26,11 @@
                 [:a {:href (str authorize-url "?" authorize-params)} "GITHUB LOGIN"]])))
 
 (defn callback-handler [req]
-  (let [body (client/post (str token-url "?" token-params "&code=" (get (:params req) "code")))]
+  (let [body (client/post (str token-url "?" token-params "&code=" (get (:params req) "code")) {:headers {"Accept" "application/json"}})]
+    ; TODO use cheshire json parsing from 
+    ; https://github.com/dakrone/clj-http?tab=readme-ov-file#incrementally-json-parsing
     (pprint body)
-    {:status 200 :body (:body body)}))
+    {:status 200 :body (str body)}))
 
 (defroutes app-routes
   (GET "/" [] home-handler)
