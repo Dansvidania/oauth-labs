@@ -8,7 +8,7 @@
                  [hiccup "2.0.0-RC3"]
                  [ring/ring-defaults "0.3.2"]]
   :plugins [[lein-ring "0.12.5"]]
-  :ring {:handler oauth-labs.handler/app}
+  :ring {:handler oauth-labs.github/app}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring/ring-mock "0.3.2"]]}})
